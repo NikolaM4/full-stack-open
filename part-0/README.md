@@ -2,7 +2,7 @@
 
 ## Intro to Full Stack Open. There weren't many tasks to do, yet to learn theory and more about this course.
 
-a. [General info](https://fullstackopen.com/en/part0/general_info)
+a. [General info](https://fullstackopen.com/en/part0/general_info)\
 b. [Fundamentals of Web apps](https://fullstackopen.com/en/part0/fundamentals_of_web_apps)
 
 ## Tasks in Part 0:
