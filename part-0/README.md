@@ -1,4 +1,4 @@
-# [Part 0] (https://fullstackopen.com/en/part0)
+# [Part 0](https://fullstackopen.com/en/part0)
 
 ## Intro to Full Stack Open. There weren't many tasks to do, yet to learn theory and more about this course.
 
@@ -13,8 +13,8 @@ b. [Fundamentals of Web apps](https://fullstackopen.com/en/part0/fundamentals_of
 
 ### 0.3: HTML forms - read HTML forms from MDN
 
-### 0.4: New note diagram - [link to exercise](part-0/0.4-New-note-diagram.md)
+### 0.4: New note diagram - [link to exercise](0.4-New-note-diagram.md)
 
-### 0.5: Single page app diagram - [link to exericse](part-0/0.5-Single-page-app-diagram.md)
+### 0.5: Single page app diagram - [link to exericse](0.5-Single-page-app-diagram.md)
 
-### 0.6: New note in Single page app diagram - [link to exercise](part-0/0.6-New-note-in-Single-page-app-diagram.md)
+### 0.6: New note in Single page app diagram - [link to exercise](0.6-New-note-in-Single-page-app-diagram.md)
