@@ -13,8 +13,39 @@ const App = () => {
   ];
 
   const [selected, setSelected] = useState(0);
+  const [votes, setVotes] = useState([0, 0, 0, 0, 0, 0, 0, 0]);
+  const [mostVotes, setMostVotes] = useState(0);
+  const [positionMostVotes, setPositionMostVotes] = useState(0);
 
-  return <div>{anecdotes[selected]}</div>;
+  const getRandomAnecdote = () => {
+    const randomNum = parseInt(Math.random() * 8);
+    setSelected(randomNum);
+  };
+
+  const vote = () => {
+    const copy = [...votes];
+    copy[selected] += 1;
+    setVotes(copy);
+    for (let i = 0; i < votes.length; i++) {
+      if (copy[selected] > mostVotes) {
+        setMostVotes(copy[selected]);
+        setPositionMostVotes(selected);
+      }
+    }
+  };
+
+  return (
+    <>
+      <h1>Anecdote of the day</h1>
+      <div>{anecdotes[selected]}</div>
+      <div>has {votes[selected]} votes</div>
+      <button onClick={() => vote()}>vote</button>
+      <button onClick={() => getRandomAnecdote()}>next anecdote</button>
+      <h2>Anecdote with most votes</h2>
+      <div>{anecdotes[positionMostVotes]}</div>
+      <div>has {mostVotes} votes</div>
+    </>
+  );
 };
 
 export default App;
