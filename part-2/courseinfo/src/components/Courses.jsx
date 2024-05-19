@@ -22,21 +22,22 @@ const Part = (props) => {
 }
 
 const Total = (props) => {
-  let numOfExercises = 0
-  props.parts.map((part) => {
-    numOfExercises += part.exercises
-  })
+  const numOfExercises = props.parts.reduce((sum, part) => sum + part.exercises, 0)
   return <b>total of {numOfExercises} exercises</b>
 }
 
-const Course = ({ course }) => {
+const Courses = ({ courses }) => {
   return (
-    <div>
-      <Header course={course.name} />
-      <Content parts={course.parts} />
-      <Total parts={course.parts} />
-    </div>
+    <>
+      {courses.map((course) => (
+        <div key={course.name}>
+          <Header course={course.name} />
+          <Content parts={course.parts} />
+          <Total parts={course.parts} />
+        </div>
+      ))}
+    </>
   )
 }
 
-export default Course
+export default Courses
