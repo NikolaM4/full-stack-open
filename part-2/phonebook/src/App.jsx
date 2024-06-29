@@ -36,7 +36,8 @@ const App = () => {
         found = true
       }
     })
-    if (found === false) setPersons([...persons, { name: newName, number, id: persons.length + 1 }])
+    if (found === false)
+      axios.post('http://localhost:3001/persons', { name: newName, number, id: persons.length + 1 }).then((response) => setPersons(persons.concat(response.data)))
   }
 
   const addFilter = (e) => {
