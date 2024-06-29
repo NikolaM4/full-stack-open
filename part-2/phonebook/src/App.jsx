@@ -37,8 +37,7 @@ const App = () => {
         found = true
       }
     })
-    if (found === false) personService.create({ name: newName, number, id: persons.length + 1 }).then((returnedPerson) => setPersons(persons.concat(returnedPerson)))
-    // axios.post('http://localhost:3001/persons', { name: newName, number, id: persons.length + 1 }).then((response) => setPersons(persons.concat(response.data)))
+    if (found === false) personService.create({ name: newName, number, id: toString(persons.length + 1) }).then((returnedPerson) => setPersons(persons.concat(returnedPerson)))
   }
 
   const addFilter = (e) => {
