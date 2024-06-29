@@ -33,10 +33,15 @@ const App = () => {
     let found = false
     persons.map((person) => {
       if (person.name === newName) {
-        alert(`${newName} is already added to phonebook`)
         found = true
       }
     })
+    if (found === true) {
+      if (confirm(`${newName} is already added to phonebook, replace the old number with a new one?`))
+        personService
+          .update(persons.find((person) => person.name === newName).id, { name: newName, number })
+          .then((returnedPerson) => setPersons(persons.map((person) => (person.id !== returnedPerson.id ? person : returnedPerson))))
+    }
     if (found === false) personService.create({ name: newName, number, id: toString(persons.length + 1) }).then((returnedPerson) => setPersons(persons.concat(returnedPerson)))
   }
 
