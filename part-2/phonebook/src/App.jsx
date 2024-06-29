@@ -4,6 +4,7 @@ import axios from 'axios'
 import Filter from './Filter'
 import PersonForm from './PersonForm'
 import Persons from './Persons'
+import personService from './services/persons'
 
 const App = () => {
   const [persons, setPersons] = useState([])
@@ -36,8 +37,8 @@ const App = () => {
         found = true
       }
     })
-    if (found === false)
-      axios.post('http://localhost:3001/persons', { name: newName, number, id: persons.length + 1 }).then((response) => setPersons(persons.concat(response.data)))
+    if (found === false) personService.create({ name: newName, number, id: persons.length + 1 }).then((returnedPerson) => setPersons(persons.concat(returnedPerson)))
+    // axios.post('http://localhost:3001/persons', { name: newName, number, id: persons.length + 1 }).then((response) => setPersons(persons.concat(response.data)))
   }
 
   const addFilter = (e) => {
