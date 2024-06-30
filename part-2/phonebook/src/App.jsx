@@ -47,7 +47,7 @@ const App = () => {
           .update(persons.find((person) => person.name === newName).id, { name: newName, number })
           .then((returnedPerson) => setPersons(persons.map((person) => (person.id !== returnedPerson.id ? person : returnedPerson))))
           .catch(() => {
-            setError(`Unable to find and update ${newName}`)
+            setError(`Information of ${newName} has already been removed from server`)
             setTimeout(() => {
               setError(null)
             }, 4000)
