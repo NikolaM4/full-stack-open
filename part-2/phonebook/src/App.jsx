@@ -5,12 +5,15 @@ import Filter from './Filter'
 import PersonForm from './PersonForm'
 import Persons from './Persons'
 import personService from './services/persons'
+import Notification from './Notification'
+import './index.css'
 
 const App = () => {
   const [persons, setPersons] = useState([])
   const [newName, setNewName] = useState('')
   const [number, setNumber] = useState('')
   const [filter, setFilter] = useState('')
+  const [message, setMessage] = useState(null)
 
   const hook = () => {
     axios.get('http://localhost:3001/persons').then((response) => {
@@ -42,7 +45,11 @@ const App = () => {
           .update(persons.find((person) => person.name === newName).id, { name: newName, number })
           .then((returnedPerson) => setPersons(persons.map((person) => (person.id !== returnedPerson.id ? person : returnedPerson))))
     }
-    if (found === false) personService.create({ name: newName, number, id: toString(persons.length + 1) }).then((returnedPerson) => setPersons(persons.concat(returnedPerson)))
+    if (found === false)
+      personService.create({ name: newName, number, id: toString(persons.length + 1) }).then((returnedPerson) => {
+        setPersons(persons.concat(returnedPerson))
+        setMessage(`Added ${newName}`)
+      })
   }
 
   const addFilter = (e) => {
@@ -54,6 +61,7 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
+      <Notification message={message} />
       <Filter addFilter={addFilter} />
       <h2>add a new</h2>
       <PersonForm addPerson={addPerson} writeName={writeName} writeNumber={writeNumber} />
