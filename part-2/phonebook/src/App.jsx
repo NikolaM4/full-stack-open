@@ -7,6 +7,7 @@ import Persons from './Persons'
 import personService from './services/persons'
 import Notification from './Notification'
 import './index.css'
+import ErrorNotification from './ErrorNotification'
 
 const App = () => {
   const [persons, setPersons] = useState([])
@@ -45,11 +46,21 @@ const App = () => {
         personService
           .update(persons.find((person) => person.name === newName).id, { name: newName, number })
           .then((returnedPerson) => setPersons(persons.map((person) => (person.id !== returnedPerson.id ? person : returnedPerson))))
+          .catch(() => {
+            setError(`Unable to find and update ${newName}`)
+            setTimeout(() => {
+              setError(null)
+            }, 4000)
+            setPersons(persons.filter((n) => n.id !== persons.id))
+          })
     }
     if (found === false)
       personService.create({ name: newName, number, id: `${persons.length + 1}` }).then((returnedPerson) => {
         setPersons(persons.concat(returnedPerson))
         setMessage(`Added ${newName}`)
+        setTimeout(() => {
+          setMessage(null)
+        }, 4000)
       })
   }
 
@@ -62,6 +73,7 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
+      <ErrorNotification message={error} />
       <Notification message={message} />
       <Filter addFilter={addFilter} />
       <h2>add a new</h2>
