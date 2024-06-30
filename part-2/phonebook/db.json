@@ -2,7 +2,7 @@
   "persons": [
     {
       "name": "Arto Hellas",
-      "number": "6467",
+      "number": "040-123456",
       "id": "1"
     },
     {
@@ -22,18 +22,13 @@
     },
     {
       "id": "[object Undefined]",
-      "name": "hf",
-      "number": "53"
+      "name": "fgdyh",
+      "number": "64"
     },
     {
-      "id": "[object Undefined]",
-      "name": "hdf",
-      "number": "35"
-    },
-    {
-      "id": "[object Undefined]",
-      "name": "jhgkjh",
-      "number": "645"
+      "id": "6",
+      "name": "yhgdjh",
+      "number": "5435"
     }
   ]
 }

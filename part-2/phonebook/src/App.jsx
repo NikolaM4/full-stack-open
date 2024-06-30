@@ -14,6 +14,7 @@ const App = () => {
   const [number, setNumber] = useState('')
   const [filter, setFilter] = useState('')
   const [message, setMessage] = useState(null)
+  const [error, setError] = useState(null)
 
   const hook = () => {
     axios.get('http://localhost:3001/persons').then((response) => {
@@ -46,7 +47,7 @@ const App = () => {
           .then((returnedPerson) => setPersons(persons.map((person) => (person.id !== returnedPerson.id ? person : returnedPerson))))
     }
     if (found === false)
-      personService.create({ name: newName, number, id: toString(persons.length + 1) }).then((returnedPerson) => {
+      personService.create({ name: newName, number, id: `${persons.length + 1}` }).then((returnedPerson) => {
         setPersons(persons.concat(returnedPerson))
         setMessage(`Added ${newName}`)
       })
