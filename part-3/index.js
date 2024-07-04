@@ -19,6 +19,12 @@ let notes = [
   },
 ]
 
+app.get('/api/notes/:id', (request, response) => {
+  const id = request.params.id
+  const note = notes.find((note) => note.id === id)
+  response.json(note)
+})
+
 app.get('/', (request, response) => {
   response.send('<h1>Hello World!</h1>')
 })
